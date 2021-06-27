@@ -27,12 +27,15 @@ class AuthenticateUserService {
             throw new Error("Email/Password incorrect")
         }
 
-        const token = sign({
+        const token = sign(
+        {
             email: user.email,
-        },"c2607833950df4d45c9484957f4a2316", {
+        },
+        "c2607833950df4d45c9484957f4a2316", 
+        {
             subject: user.id,
             expiresIn: "1d"
-        })
+        });
 
         return token;
 
